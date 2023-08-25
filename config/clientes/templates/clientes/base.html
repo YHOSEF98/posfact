@@ -1,0 +1,300 @@
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'clientes/index/img/logo.png' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="{% static 'clientes/lib/adminlite/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/plugins/jqvmap/jqvmap.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/css/adminlte.min.css' %}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/plugins/daterangepicker/daterangepicker.css' %}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{% static 'clientes/lib/adminlite/plugins/summernote/summernote-bs4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'clientes/index/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'clientes/index/DataTables/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'clientes/index/DataTables/Buttons-2.0.1/css/buttons.dataTables.min.css' %}">
+
+    <script type="text/javascript" charset="utf8" src="{% static 'clientes/index/js/jquery.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'clientes/jquery-ui/jquery-ui.min.css' %}">
+    <script src="{% static 'clientes/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static 'clientes/index/js/sweet.js' %}"></script>
+
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed sidebar-closed sidebar-collapse">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                    <i class="fas fa-power-off" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="" class="brand-link">
+            <img src="{% static 'clientes/index/img/logo.png' %}" alt="Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+            <span class="brand-text font-weight-light">Punto Venta</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+                <li class="nav-header">OPCIONES</li>
+                <li class="nav-item">
+                <a href="{% url 'ventas' %}" class="nav-link">
+                    <i class="nav-icon far fa-calendar-alt"></i>
+                    <p>
+                    Ventas
+                    <i class="fas fa-angle-left right"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Agregar pedido</p>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="{% url 'Add2Venta' %}" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Crear factura</p>
+                        </a>
+                        </li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'ventas' %}" class="nav-link">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                        Cuentas
+                        <i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>Cuentas</p>
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="{% url 'mesas' %}" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Mesas</p>
+                            </a>
+                            </li>
+                    </ul>
+                    </li>
+                <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="nav-icon fas fa-boxes"></i>
+                    <p>
+                    Inventario
+                    <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{% url 'productos' %}" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Productos</p>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="{% url 'categorias' %}" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Categorias</p>
+                        </a>
+                        </li>
+                    <li class="nav-item">
+                    <a href="{% url 'entradas-inv' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-info"></i>
+                        <p>Entradas</p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="{% url 'salidas-inv' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <p>Salidas</p>
+                    </a>
+                    </li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="nav-icon fas fa-industry"></i>
+                    <p>
+                    Compras
+                    </p>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                    Pedidos
+                    <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                    <a href="{% url 'pedidos' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-info"></i>
+                        <p>Todos</p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <p>Para hoy</p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>Atrasados</p>
+                    </a>
+                    </li>
+                </ul>
+                </li>
+                <li class="nav-header">EMPRESA</li>
+                <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class=" nav-icon fas fa-globe"></i>
+                    <p>Información</p>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a href="{% url 'clientes' %}" class="nav-link">
+                    <i class="nav-icon fas fa-users-cog"></i>
+                    <p>Clientes</p>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="nav-icon fas fa-chart-line"></i>
+                    <p>Dashboard</p>
+                </a>
+                </li>
+            </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer text-center text-primary">
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- ChartJS -->
+    <!-- Sparkline -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/sparklines/sparkline.js' %}"></script>
+    <!-- JQVMap -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'lib/adminlite/plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+    <!-- daterangepicker -->
+    <script src="{% static 'clientes/lib/adminlite/plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'clientes/lib/adminlite/plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script
+        src="{% static 'clientes/lib/adminlite/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Summernote -->
+    <script src=" {% static 'clientes/lib/adminlite/plugins/summernote/summernote-bs4.min.js' %}"></script>
+    <!-- overlayScrollbars -->
+    <script src=" {% static 'clientes/lib/adminlite/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'clientes/lib/adminlite/js/adminlte.js' %}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{% static 'clientes/lib/adminlite/js/demo.js' %}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{% static 'clientes/lib/adminlite/js/pages/dashboard.js' %}"></script>
+    <script src="{% static 'clientes/index/DataTables/datatables.min.js' %}"></script>
+    <script src="{% static 'clientes/index/DataTables/datatables.min.js' %}"></script>
+    <script src="{% static 'clientes/index/DataTables/Buttons-2.0.1/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'clientes/index/DataTables/Buttons-2.0.1/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'clientes/index/DataTables/Buttons-2.0.1/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'clientes/index/DataTables/Buttons-2.0.1/js/pdfmaker.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static 'clientes/index/js/main.js' %}"></script>
+    {% block javascript %}
+    
+    {% endblock  %}
+    </body>
+
+    </html>

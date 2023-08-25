@@ -1,0 +1,31 @@
+{% extends 'clientes/list.html' %}
+
+{% block colums %}
+<tr>
+    <th scope="col">Nro</th>
+    <th scope="col">Producto</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Fecha</th>
+</tr>
+{% endblock  %}
+
+{% block rows %}
+
+{% for c in object_list %}
+    <tr>
+        <td>{{c.id}}</td>
+        <td>{{c.producto}}</td>
+        <td>{{c.cantidad}}</td>
+        <td>{{c.fecha}}</td>
+        <td>
+            <a href="{% url 'edit-inv' c.id %}" type="button" class="btn btn-primary btn-xs">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a href="{% url 'delete-inv' c.id %}" type="button" class="btn btn-danger btn-xs">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </td>
+    </tr>
+{% endfor %}
+
+{% endblock  %}

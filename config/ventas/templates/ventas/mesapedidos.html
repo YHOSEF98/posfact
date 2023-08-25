@@ -1,0 +1,101 @@
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+            
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ title }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="data">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nro</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Accioines</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in object_list %}
+                                    <tr>
+                                        <td>{{p.id}}</td>
+                                        <td>{{p.producto}}</td>
+                                        <td>{{p.cantidad}}</td>
+                                        <td>
+                                            <a href="" type="button" class="btn btn-primary btn-xs">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="{" type="button" class="btn btn-danger btn-xs">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                <div class="card-footer">
+                    <a href="{{ create_url }}" class="btn btn-primary" id="btnIngreso">
+                        <i class="fas fa-plus"> Nuevo registro</i>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}
+
+{% block javascript %}
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('#data').DataTable({
+            responsive: true,
+            autoWidth: false,
+            "language": {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    
+        /*$('#btnIngreso').on('click', function() {
+            $.ajax({
+                url: "{% url 'categorias' %}",
+                type: 'POST',
+                data: { id: 1 },
+                dataType: 'json'
+            }).done(function(data) {
+                // Acciones a realizar cuando la solicitud AJAX es exitosa
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                // Acciones a realizar cuando la solicitud AJAX falla
+                alert(textStatus + ': ' + errorThrown);
+            }).always(function(data) {
+                // Acciones a realizar siempre después de completar la solicitud AJAX
+            });
+        });*/
+    });
+    </script>
+    
+{% endblock  %}

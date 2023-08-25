@@ -1,0 +1,31 @@
+{% extends 'clientes/list.html' %}
+
+
+{% block colums %}
+<tr>
+    <th scope="col">Nro</th>
+    <th scope="col">Producto</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Accioines</th>
+</tr>
+{% endblock  %}
+
+{% block rows %}
+
+{% for p in object_list %}
+    <tr>
+        <td>{{p.id}}</td>
+        <td>{{p.producto}}</td>
+        <td>{{p.cantidad}}</td>
+        <td>
+            <a href="" type="button" class="btn btn-primary btn-xs">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a href="{" type="button" class="btn btn-danger btn-xs">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </td>
+    </tr>
+{% endfor %}
+
+{% endblock  %}

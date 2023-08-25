@@ -1,0 +1,154 @@
+{% extends 'clientes/base.html' %}
+
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+            
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ title }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"><i class="fas fa-boxes"></i> Detalle</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Buscador de productos:</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Ingrese un producto">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-danger btn-flat"><i class="fas fa-times"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <table class="table table-bordered" id="tblProducts">
+                                            <thead>
+                                                <tr>
+                                                    <th>Eliminar</th>
+                                                    <th>producto</th>
+                                                    <th>Categoria</th>
+                                                    <th>Precio</th>
+                                                    <th>Cantidad</th>
+                                                    <th>subtotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Datos de la factura</h3>
+                                            </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label>Fecha de venta</label>
+                                                {{form.date_joined}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Cliente:</label>
+                                                {{form.cli}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>subtotal:</label>
+                                                {{form.subtotal}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>IVA:</label>
+                                                {{form.iva}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Total a pagar:</label>
+                                                {{form.total}}
+                                            </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="card-footer">
+                    <a href="{{ create_url }}" class="btn btn-primary">
+                        <i class="fas fa-plus"> Nuevo registro</i>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}
+
+{% block javascript %}
+<script>
+    var vents={
+        items: {
+            cli:'',
+            date_joined:'',
+            subtotal: 0.00,
+            iva: 0.00,
+            total: 0.00,
+            products: []
+        },
+        
+    }
+</script>
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('#data').DataTable({
+            responsive: true,
+            autoWidth: false,
+            "language": {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    
+        /*$('#btnIngreso').on('click', function() {
+            $.ajax({
+                url: "{% url 'categorias' %}",
+                type: 'POST',
+                data: { id: 1 },
+                dataType: 'json'
+            }).done(function(data) {
+                // Acciones a realizar cuando la solicitud AJAX es exitosa
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                // Acciones a realizar cuando la solicitud AJAX falla
+                alert(textStatus + ': ' + errorThrown);
+            }).always(function(data) {
+                // Acciones a realizar siempre después de completar la solicitud AJAX
+            });
+        });*/
+    });
+    </script>
+    
+    <script src="/static/ventas/js/cargadatos.js"></script>
+{% endblock  %}
